@@ -15,3 +15,13 @@ export interface IStatusType {
   code: string;
   message: string;
 }
+
+export type TPokemonData = {
+  name: string;
+  image: string;
+  types: string[];
+};
+
+export type TDBItem = TPokemonData & {
+  imageUrl: string;
+};

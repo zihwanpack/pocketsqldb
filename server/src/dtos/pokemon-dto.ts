@@ -1,10 +1,6 @@
-type TPokemonData = {
-  name: string;
-  image: string;
-  types: string[];
-};
+import { TDBItem, TPokemonData } from '../../types';
 
-export const pokemonResponseDTO = (data: any[]): { pokemonData: TPokemonData[] } => {
+export const pokemonResponseDTO = (data: TDBItem[]): { pokemonData: TPokemonData[] } => {
   const pokemonData: TPokemonData[] = data.map(item => ({
     name: item.name,
     image: item.imageUrl,
