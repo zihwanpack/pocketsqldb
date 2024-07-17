@@ -8,6 +8,6 @@ export const getAllPokemonController = async (req, res) => {
 };
 
 export const getPokemonController = async (req, res) => {
-  const { id } = req.params;
-  return res.send(response(successStatus.GET_ONE_POST_SUCCESS, await getOnePokemon(id)));
+  const { number } = req.params;
+  return res.send(response(successStatus.GET_ONE_POST_SUCCESS, await getOnePokemon(number)));
 };

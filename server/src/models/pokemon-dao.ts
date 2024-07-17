@@ -3,15 +3,15 @@ import { errStatus } from '../../config/errorStatus';
 import { getPokemonQuery, getPokemonQueryByNumber } from './pokemon-sql';
 import { BaseError } from '../../config/baseError';
 
-export const getPokemon = async (id = null) => {
+export const getPokemon = async (number = null) => {
   try {
     const conn = await pool.getConnection();
 
     let data;
-    if (id === undefined || id === null) {
+    if (number === undefined || number === null) {
       [data] = await pool.query(getPokemonQuery);
     } else {
-      [data] = await pool.query(getPokemonQueryByNumber, [parseInt(id)]);
+      [data] = await pool.query(getPokemonQueryByNumber, [parseInt(number)]);
     }
 
     conn.release();

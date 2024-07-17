@@ -4,4 +4,4 @@ export const getPokemonQuery = `SELECT *
                                 FROM pokemon;`;
 
 export const getPokemonQueryByNumber = `SELECT * 
-                                        FROM pokemon WHERE number = 1;`;
+                                        FROM pokemon WHERE number = ?;`;

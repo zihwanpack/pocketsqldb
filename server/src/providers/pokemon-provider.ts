@@ -4,6 +4,6 @@ export const getAllPokemon = async () => {
   return pokemonResponseDTO(await getPokemon());
 };
 
-export const getOnePokemon = async id => {
-  return pokemonResponseDTO(await getPokemon(id));
+export const getOnePokemon = async number => {
+  return pokemonResponseDTO(await getPokemon(number));
 };
