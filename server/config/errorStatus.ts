@@ -32,6 +32,12 @@ export const errStatus = {
     code: 'COMMON004',
     message: '금지된 요청입니다.',
   },
+  PARAMETER_IS_WRONG: {
+    status: StatusCodes.BAD_REQUEST,
+    isSuccess: false,
+    code: 'COMMON005',
+    message: '파라미터가 잘못됐습니다.',
+  },
   // 회원가입 에러
   AUTHENTICATION_FAILED: {
     status: StatusCodes.UNAUTHORIZED,
@@ -84,3 +90,5 @@ export const errStatus = {
     message: '게시글 삭제 중 오류가 발생했습니다.',
   },
 };
+
+module.exports = { errStatus };

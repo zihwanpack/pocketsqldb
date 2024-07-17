@@ -9,16 +9,19 @@ export const successStatus = {
     message: 'success!',
   },
   TOKEN_VERIFICATION_SUCCESS: {
+    status: StatusCodes.OK,
     isSuccess: true,
     code: 'TOKEN200',
     message: 'JWT 토큰 검증 성공',
   },
   JOIN_SUCCESS: {
+    status: StatusCodes.OK,
     isSuccess: true,
     code: 'MEMBER200',
     message: '회원가입 성공입니다.',
   },
   LOGIN_SUCCESS: {
+    status: StatusCodes.OK,
     isSuccess: true,
     code: 'MEMBER2001',
     message: '로그인 성공',

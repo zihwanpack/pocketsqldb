@@ -1,4 +1,4 @@
-export const response = (data = {}, result) => {
+export const response = (data, result) => {
   const { isSuccess, code, message } = data;
   return {
     isSuccess: isSuccess,
