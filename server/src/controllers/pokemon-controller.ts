@@ -1,13 +1,33 @@
-import { response } from '../../config/response';
+import { errStatus } from '../../config/errorStatus';
+import { errResponse, response } from '../../config/response';
 import { successStatus } from '../../config/successStatus';
-
 import { getAllPokemon, getOnePokemon } from '../providers/pokemon-provider';
+import { deleteOnePokemon } from '../services/pokemon-service';
 
-export const getAllPokemonController = async (req, res) => {
-  return res.send(response(successStatus.GET_ALL_POSTS_SUCCESS, await getAllPokemon()));
+const getAllPokemonController = async (req, res) => {
+  try {
+    return res.send(response(successStatus.GET_ALL_POSTS_SUCCESS, await getAllPokemon()));
+  } catch (err) {
+    res.send(errResponse(errStatus.BAD_REQUEST));
+  }
 };
 
-export const getPokemonController = async (req, res) => {
-  const { number } = req.params;
-  return res.send(response(successStatus.GET_ONE_POST_SUCCESS, await getOnePokemon(number)));
+const getOnePokemonController = async (req, res) => {
+  try {
+    const { number } = req.params;
+    return res.send(response(successStatus.GET_ONE_POST_SUCCESS, await getOnePokemon(number)));
+  } catch (err) {
+    res.send(errResponse(errStatus.BAD_REQUEST));
+  }
 };
+
+const deleteOnePokemonController = async (req, res) => {
+  try {
+    const { number } = req.params;
+    return res.send(response(successStatus.DELETE_POST_SUCCESS, await deleteOnePokemon(number)));
+  } catch (err) {
+    res.send(errResponse(errStatus.BAD_REQUEST));
+  }
+};
+
+export { getAllPokemonController, getOnePokemonController, deleteOnePokemonController };

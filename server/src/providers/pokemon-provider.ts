@@ -1,9 +1,15 @@
-import { pokemonResponseDTO } from '../dtos/pokemon-dto';
+import { getPokemonResponseDTO } from '../dtos/pokemon-dto';
 import { getPokemon } from '../models/pokemon-dao';
-export const getAllPokemon = async () => {
-  return pokemonResponseDTO(await getPokemon());
+import { IOnePokemonProps } from '../../types';
+
+const getAllPokemon = async (): Promise<ReturnType<typeof getPokemonResponseDTO>> => {
+  const pokemons = await getPokemon();
+  return getPokemonResponseDTO(pokemons);
 };
 
-export const getOnePokemon = async number => {
-  return pokemonResponseDTO(await getPokemon(number));
+const getOnePokemon = async (number: IOnePokemonProps): Promise<ReturnType<typeof getPokemonResponseDTO>> => {
+  const pokemon = await getPokemon(number);
+  return getPokemonResponseDTO(pokemon);
 };
+
+export { getAllPokemon, getOnePokemon };

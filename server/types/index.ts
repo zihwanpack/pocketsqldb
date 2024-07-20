@@ -1,4 +1,4 @@
-export interface IDatabaseConfig {
+interface IDatabaseConfig {
   host: string;
   user: string;
   port: number;
@@ -9,19 +9,24 @@ export interface IDatabaseConfig {
   queueLimit: number;
 }
 
-export interface IStatusType {
+interface IStatusType {
   status: string;
   isSuccess: boolean;
   code: string;
   message: string;
 }
 
-export type TPokemonData = {
+type TPokemonData = {
   name: string;
   image: string;
   types: string[];
 };
 
-export type TDBItem = TPokemonData & {
+type TDBItem = TPokemonData & {
   imageUrl: string;
 };
+
+interface IOnePokemonProps {
+  number?: string | number | null;
+}
+export type { IDatabaseConfig, IOnePokemonProps, TDBItem, TPokemonData, IStatusType };

@@ -1,7 +1,9 @@
 // store.sql.js
 
-export const getPokemonQuery = `SELECT * 
-                                FROM pokemon;`;
+const getPokemonQuery = `SELECT * FROM pokemon;`;
 
-export const getPokemonQueryByNumber = `SELECT * 
-                                        FROM pokemon WHERE number = ?;`;
+const getPokemonQueryByNumber = `SELECT * FROM pokemon WHERE number = ?;`;
+
+const deletePokemonQueryByNumber = `DELETE FROM pokemon WHERE number = ?;`;
+
+export { getPokemonQuery, getPokemonQueryByNumber, deletePokemonQueryByNumber };
