@@ -6,6 +6,7 @@ import {
   getOnePokemonController,
   deleteOnePokemonController,
   postPokemonController,
+  updatePokemonController,
 } from '../controllers/pokemon-controller';
 
 export const pokemonRouter = express.Router({ mergeParams: true });
@@ -15,4 +16,5 @@ pokemonRouter.route('/').get(asyncHandler(getAllPokemonController)).post(asyncHa
 pokemonRouter
   .route('/:number')
   .get(asyncHandler(getOnePokemonController))
-  .delete(asyncHandler(deleteOnePokemonController));
+  .delete(asyncHandler(deleteOnePokemonController))
+  .put(asyncHandler(updatePokemonController));

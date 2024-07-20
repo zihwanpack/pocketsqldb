@@ -22,4 +22,13 @@ const postPokemonResponseDTO = (data: any): { pokemonData: TPokemonData } => {
   return data;
 };
 
-export { getPokemonResponseDTO, deletePokemonResponseDTO, postPokemonResponseDTO };
+const updatePokemonResponseDTO = (data: any): { pokemonData: TPokemonData } => {
+  // const pokemonData: TPokemonData = {
+  //   name: data.name,
+  //   image: data.imageUrl,
+  //   types: data.types,
+  // };
+  return data;
+};
+
+export { getPokemonResponseDTO, deletePokemonResponseDTO, postPokemonResponseDTO, updatePokemonResponseDTO };

@@ -20,6 +20,7 @@ type TPokemonData = {
   name: string;
   image: string;
   types: string[];
+  number?: string | number | null;
 };
 
 type TDBItem = TPokemonData & {

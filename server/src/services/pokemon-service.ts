@@ -1,8 +1,6 @@
-import { deletePokemonResponseDTO } from '../dtos/pokemon-dto';
-import { deletePokemon, postPokemon } from '../models/pokemon-dao';
+import { deletePokemon, postPokemon, updatePokemon } from '../models/pokemon-dao';
 import { IOnePokemonProps, TPokemonData } from '../../types';
-
-import { postPokemonResponseDTO } from '../dtos/pokemon-dto';
+import { postPokemonResponseDTO, updatePokemonResponseDTO, deletePokemonResponseDTO } from '../dtos/pokemon-dto';
 
 const deleteOnePokemon = async (number: IOnePokemonProps): Promise<ReturnType<typeof deletePokemonResponseDTO>> => {
   const pokemon = await deletePokemon(number);
@@ -14,9 +12,12 @@ const postOnePokemon = async (poketData: TPokemonData): Promise<ReturnType<typeo
   return postPokemonResponseDTO(pokemon);
 };
 
-const updateOnePokemon = async (number: TPokemonData): Promise<ReturnType<typeof postPokemonResponseDTO>> => {
-  const pokemon = await postPokemon(poketData);
-  return postPokemonResponseDTO(pokemon);
+const updateOnePokemon = async (
+  number: IOnePokemonProps,
+  poketData: TPokemonData,
+): Promise<ReturnType<typeof postPokemonResponseDTO>> => {
+  const pokemon = await updatePokemon(number, poketData);
+  return updatePokemonResponseDTO(pokemon);
 };
 
 export { deleteOnePokemon, postOnePokemon, updateOnePokemon };

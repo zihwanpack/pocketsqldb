@@ -5,6 +5,7 @@ import {
   getPokemonQuery,
   getPokemonQueryByNumber,
   createPokemonQuery,
+  updatePokemonQuery,
 } from './pokemon-sql';
 import { BaseError } from '../../config/baseError';
 import { IOnePokemonProps, TPokemonData } from '../../types';
@@ -56,4 +57,20 @@ const postPokemon = async (poketData: TPokemonData) => {
   }
 };
 
-export { getPokemon, deletePokemon, postPokemon };
+const updatePokemon = async (number: IOnePokemonProps, poketData: TPokemonData) => {
+  try {
+    const connection = await pool.getConnection();
+    const [data] = await connection.query(updatePokemonQuery, [
+      poketData.name,
+      poketData.types,
+      poketData.image,
+      number,
+    ]);
+    connection.release();
+    return data;
+  } catch (err) {
+    throw new BaseError(errStatus.PARAMETER_IS_WRONG);
+  }
+};
+
+export { getPokemon, deletePokemon, postPokemon, updatePokemon };
