@@ -18,4 +18,8 @@ const deletePokemonResponseDTO = (data: TDBItem): { pokemonData: TPokemonData } 
   return { pokemonData };
 };
 
-export { getPokemonResponseDTO, deletePokemonResponseDTO };
+const postPokemonResponseDTO = (data: any): { pokemonData: TPokemonData } => {
+  return data;
+};
+
+export { getPokemonResponseDTO, deletePokemonResponseDTO, postPokemonResponseDTO };

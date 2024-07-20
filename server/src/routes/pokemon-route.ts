@@ -1,12 +1,18 @@
 import express from 'express';
 import asyncHandler from 'express-async-handler';
-import { getAllPokemonController, getOnePokemonController } from '../controllers/pokemon-controller';
-import { deleteOnePokemonController } from '../controllers/pokemon-controller';
+
+import {
+  getAllPokemonController,
+  getOnePokemonController,
+  deleteOnePokemonController,
+  postPokemonController,
+} from '../controllers/pokemon-controller';
 
 export const pokemonRouter = express.Router({ mergeParams: true });
 
-pokemonRouter.get('/', asyncHandler(getAllPokemonController));
+pokemonRouter.route('/').get(asyncHandler(getAllPokemonController)).post(asyncHandler(postPokemonController));
 
 pokemonRouter
-  .get('/:number', asyncHandler(getOnePokemonController))
-  .delete('/:number', asyncHandler(deleteOnePokemonController));
+  .route('/:number')
+  .get(asyncHandler(getOnePokemonController))
+  .delete(asyncHandler(deleteOnePokemonController));

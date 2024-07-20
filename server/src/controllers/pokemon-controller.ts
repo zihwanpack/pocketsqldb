@@ -2,7 +2,7 @@ import { errStatus } from '../../config/errorStatus';
 import { errResponse, response } from '../../config/response';
 import { successStatus } from '../../config/successStatus';
 import { getAllPokemon, getOnePokemon } from '../providers/pokemon-provider';
-import { deleteOnePokemon } from '../services/pokemon-service';
+import { deleteOnePokemon, postOnePokemon } from '../services/pokemon-service';
 
 const getAllPokemonController = async (req, res) => {
   try {
@@ -30,4 +30,12 @@ const deleteOnePokemonController = async (req, res) => {
   }
 };
 
-export { getAllPokemonController, getOnePokemonController, deleteOnePokemonController };
+const postPokemonController = async (req, res) => {
+  try {
+    return res.send(response(successStatus.MAKE_POST_SUCCESS, await postOnePokemon(req.body)));
+  } catch (err) {
+    res.send(errResponse(errStatus.BAD_REQUEST));
+  }
+};
+
+export { getAllPokemonController, getOnePokemonController, deleteOnePokemonController, postPokemonController };
