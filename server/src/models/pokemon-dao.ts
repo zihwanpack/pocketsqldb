@@ -7,24 +7,24 @@ import {
   createPokemonQuery,
   updatePokemonQuery,
 } from './pokemon-sql';
-import { BaseError } from '../../config/baseError';
+import { CustomError } from '../../config/customError';
 import { IOnePokemonProps, TPokemonData } from '../../types';
 
 const getPokemon = async (number?: IOnePokemonProps) => {
   try {
     const connection = await pool.getConnection();
 
-    let data;
+    let row;
     if (number === undefined || number === null) {
-      [data] = await pool.query(getPokemonQuery);
+      [row] = await pool.query(getPokemonQuery);
     } else {
-      [data] = await pool.query(getPokemonQueryByNumber, [typeof number === 'string' ? parseInt(number) : number]);
+      [row] = await pool.query(getPokemonQueryByNumber, [typeof number === 'string' ? parseInt(number) : number]);
     }
 
     connection.release();
-    return data;
+    return row;
   } catch (err) {
-    throw new BaseError(errStatus.PARAMETER_IS_WRONG);
+    throw new CustomError(errStatus.PARAMETER_IS_WRONG);
   }
 };
 
@@ -32,44 +32,44 @@ const deletePokemon = async (number: IOnePokemonProps) => {
   try {
     const connection = await pool.getConnection();
 
-    let data;
+    let row;
     if (number !== undefined && !isNaN(Number(number))) {
-      [data] = await pool.query(deletePokemonQueryByNumber, [typeof number === 'string' ? parseInt(number) : number]);
+      [row] = await pool.query(deletePokemonQueryByNumber, [typeof number === 'string' ? parseInt(number) : number]);
     } else {
-      throw new BaseError(errStatus.PARAMETER_IS_WRONG);
+      throw new CustomError(errStatus.PARAMETER_IS_WRONG);
     }
     connection.release();
-    return data;
+    return row;
   } catch (err) {
-    throw new BaseError(errStatus.PARAMETER_IS_WRONG);
+    throw new CustomError(errStatus.PARAMETER_IS_WRONG);
   }
 };
 
 const postPokemon = async (poketData: TPokemonData) => {
   try {
     const connection = await pool.getConnection();
-    const [data] = await connection.query(createPokemonQuery, [poketData.name, poketData.types, poketData.image]);
+    const [row] = await connection.query(createPokemonQuery, [poketData.name, poketData.types, poketData.image]);
     connection.release();
-    console.log(data);
-    return data;
+    console.log(row);
+    return row;
   } catch (err) {
-    throw new BaseError(errStatus.PARAMETER_IS_WRONG);
+    throw new CustomError(errStatus.PARAMETER_IS_WRONG);
   }
 };
 
 const updatePokemon = async (number: IOnePokemonProps, poketData: TPokemonData) => {
   try {
     const connection = await pool.getConnection();
-    const [data] = await connection.query(updatePokemonQuery, [
+    const [row] = await connection.query(updatePokemonQuery, [
       poketData.name,
       poketData.types,
       poketData.image,
       number,
     ]);
     connection.release();
-    return data;
+    return row;
   } catch (err) {
-    throw new BaseError(errStatus.PARAMETER_IS_WRONG);
+    throw new CustomError(errStatus.PARAMETER_IS_WRONG);
   }
 };
 

@@ -15,7 +15,7 @@ const postOnePokemon = async (poketData: TPokemonData): Promise<ReturnType<typeo
 const updateOnePokemon = async (
   number: IOnePokemonProps,
   poketData: TPokemonData,
-): Promise<ReturnType<typeof postPokemonResponseDTO>> => {
+): Promise<ReturnType<typeof updatePokemonResponseDTO>> => {
   const pokemon = await updatePokemon(number, poketData);
   return updatePokemonResponseDTO(pokemon);
 };
