@@ -1,4 +1,4 @@
-import { pool } from '../../config/db-config';
+import { pool } from '../../config/dbConfig';
 import { errStatus } from '../../config/errorStatus';
 import {
   deletePokemonQueryByNumber,
