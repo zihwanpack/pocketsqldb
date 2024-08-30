@@ -1,31 +1,19 @@
-# React + TypeScript + Vite
+# pocketsqldb
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+> 이 프로젝트를 하며 지향할 점
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+최대한 **다양한** 라이브러리 사용을 목표로 한다. (다양한 경험을 목표로 함)
 
-## Expanding the ESLint configuration
+우선 TS는 기본적으로 사용할 것
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Backend:
 
-- Configure the top-level `parserOptions` property like this:
+- ORM (sequelize 사용해보기)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Frontend:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# pocketsqldb를 만들어보자
+- tanstack query 사용해보기
+- RTK 다시 리마인드
+- React Router Dom 사용

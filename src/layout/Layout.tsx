@@ -1,8 +1,9 @@
 import { Outlet } from 'react-router-dom';
+import Header from '../components/header/Header';
 const Layout: React.FC = () => {
   return (
-    <div className="bg-red-500 h-full w-full">
-      <p className="text-red-700">gkdl</p>
+    <div className="flex flex-col min-h-screen">
+      <Header />
       <Outlet />
     </div>
   );
