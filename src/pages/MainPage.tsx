@@ -1,5 +1,9 @@
 const MainPage = () => {
-  return <div className="text-red-400"></div>;
+  return (
+    <section className="">
+      <p>하이</p>
+    </section>
+  );
 };
 
 export default MainPage;
