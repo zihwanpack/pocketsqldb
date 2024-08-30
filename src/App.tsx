@@ -12,6 +12,18 @@ const router = createBrowserRouter([
         element: <MainPage />,
       },
       {
+        path: '/login',
+        element: <MainPage />,
+      },
+      {
+        path: '/mypage',
+        element: <MainPage />,
+      },
+      {
+        path: '/pokedex',
+        element: <MainPage />,
+      },
+      {
         path: '*',
         element: <ErrorPage />,
       },

@@ -1,6 +1,6 @@
 const MainPage = () => {
   return (
-    <section className="">
+    <section className="h-screen">
       <p>하이</p>
     </section>
   );

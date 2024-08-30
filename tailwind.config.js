@@ -12,6 +12,7 @@ export default {
       navyBlue: '#2C3E50',
       mintGreen: '#1ABC9C',
       textColor: '#333333',
+      hotpink: 'rgb(255 20 147 / 0.7)',
     },
   },
   plugins: [],
