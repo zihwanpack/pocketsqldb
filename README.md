@@ -17,3 +17,4 @@ Frontend:
 - tanstack query 사용해보기
 - RTK 다시 리마인드
 - React Router Dom 사용
+- SEO에 유의하며 코드 작성하기 (div의 남용을 피하기)

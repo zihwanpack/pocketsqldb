@@ -2,7 +2,11 @@
 export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        serif: ['Noto Serif KR', 'serif'],
+      },
+    },
     colors: {
       bgColor: '#FAFAFA',
       navyBlue: '#2C3E50',
