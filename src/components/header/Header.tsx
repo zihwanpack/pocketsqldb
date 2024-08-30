@@ -6,9 +6,9 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const Header: React.FC = () => {
   return (
-    <header className="h-15 sticky top-0 backdrop-blur-[2px] bg-hotpink flex flex-row justify-between items-center px-3">
+    <header className="h-15 sticky top-0 backdrop-blur-sm bg-headerMint flex flex-row justify-between items-center px-3">
       <Link to="/">
-        <img className="h-full object-contain" src="/public/main_logo.png" alt="포켓몬 로고" />
+        <img className="h-full object-contain" src="main_logo.png" alt="포켓몬 로고" />
       </Link>
       <nav className="text-textColor text-xl font-bold">
         <ul className="flex flex-row gap-5">
