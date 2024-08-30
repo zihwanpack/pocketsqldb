@@ -18,3 +18,4 @@ Frontend:
 - RTK 다시 리마인드
 - React Router Dom 사용
 - SEO에 유의하며 코드 작성하기 (div의 남용을 피하기)
+- 다양한 hook을 써볼 것
