@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './layout/Layout';
-import { ErrorPage, MainPage } from './pages';
+import { ErrorPage, LoginPage, MainPage, PokedexPage } from './pages';
 
 const router = createBrowserRouter([
   {
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/login',
-        element: <MainPage />,
+        element: <LoginPage />,
       },
       {
         path: '/mypage',
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/pokedex',
-        element: <MainPage />,
+        element: <PokedexPage />,
       },
       {
         path: '*',
