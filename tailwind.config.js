@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import colors from 'tailwindcss/colors';
+
 export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
@@ -11,6 +13,7 @@ export default {
       },
     },
     colors: {
+      ...colors,
       bgColor: '#f5f5f5',
       navyBlue: '#2C3E50',
       headerMint: 'rgba(26, 188, 156, 0.5)',

@@ -23,7 +23,6 @@ const PokedexPage: React.FC = () => {
   return isPending ? (
     <LoadingSpinner />
   ) : (
-    // h-screen 빼야함
     <section className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
       {res?.map(({ name, image, types }, index) => {
         return <Card id={index} name={name} image={image} types={types} />;
