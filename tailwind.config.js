@@ -12,6 +12,7 @@ export default {
         serif: ['Noto Serif KR', 'serif'],
       },
     },
+
     colors: {
       ...colors,
       bgColor: '#f5f5f5',
