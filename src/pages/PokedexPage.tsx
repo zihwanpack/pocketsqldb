@@ -16,7 +16,7 @@ interface ApiResponse {
 
 const PokedexPage: React.FC = () => {
   const url = 'http://localhost:3000';
-  const { data, isPending, error } = useFetch<ApiResponse>(url);
+  const { data, isPending, error } = useFetch<ApiResponse>(url, 10, 20);
 
   if (error) return <div>에러 발생: {error.message}</div>;
   const res = data?.result;

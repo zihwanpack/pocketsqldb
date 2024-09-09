@@ -1,12 +1,15 @@
 import { errStatus } from '../../config/errorStatus';
 import { errResponse, response } from '../../config/response';
 import { successStatus } from '../../config/successStatus';
-import { getAllPokemon, getOnePokemon } from '../providers/pokemon-provider';
+import { getAllPokemonProvider, getOnePokemonProvider } from '../providers/pokemon-provider';
 import { deleteOnePokemon, postOnePokemon, updateOnePokemon } from '../services/pokemon-service';
 
 const getAllPokemonController = async (req, res) => {
+  let { limit } = req.query;
+  const { cursor } = req.query;
+  limit = parseInt(limit);
   try {
-    return res.send(response(successStatus.GET_ALL_POSTS_SUCCESS, await getAllPokemon()));
+    return res.send(response(successStatus.GET_ALL_POSTS_SUCCESS, await getAllPokemonProvider(cursor, limit)));
   } catch (err) {
     res.send(errResponse(errStatus.BAD_REQUEST));
   }
@@ -15,7 +18,7 @@ const getAllPokemonController = async (req, res) => {
 const getOnePokemonController = async (req, res) => {
   try {
     const { number } = req.params;
-    return res.send(response(successStatus.GET_ONE_POST_SUCCESS, await getOnePokemon(number)));
+    return res.send(response(successStatus.GET_ONE_POST_SUCCESS, await getOnePokemonProvider(number)));
   } catch (err) {
     res.send(errResponse(errStatus.BAD_REQUEST));
   }

@@ -9,18 +9,6 @@ interface IDatabaseConfig {
   queueLimit: number;
 }
 
-// interface PokemonRepository {
-//   getAll(): Promise<Pokemon[]>
-//   get(id: string): Promise<Pokemon>
-//   update(id: string, data: Partial<Pokemon>)
-//   delete()
-//   create()
-// }
-
-// async function getAllPokemonsService(repo: PokemonRepository): Promise<Pokemon[]> {
-//   return await repo.getAll()
-// }
-
 interface IStatusType {
   status: string;
   isSuccess: boolean;

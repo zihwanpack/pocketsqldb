@@ -1,5 +1,15 @@
 import { TDBItem, TPokemonData } from '../../types';
 import { QueryResult } from 'mysql2';
+
+const getOnePokemonResponseDTO = (data): TPokemonData => {
+  const pokemonData: TPokemonData = {
+    name: data.name,
+    image: data.imageUrl,
+    types: data.types,
+  };
+  return pokemonData;
+};
+
 const getPokemonResponseDTO = (data: TDBItem[]): TPokemonData[] => {
   const pokemonData: TPokemonData[] = data.map(item => ({
     name: item.name,
@@ -26,4 +36,10 @@ const updatePokemonResponseDTO = (data: QueryResult): QueryResult => {
   return data;
 };
 
-export { getPokemonResponseDTO, deletePokemonResponseDTO, postPokemonResponseDTO, updatePokemonResponseDTO };
+export {
+  getOnePokemonResponseDTO,
+  getPokemonResponseDTO,
+  deletePokemonResponseDTO,
+  postPokemonResponseDTO,
+  updatePokemonResponseDTO,
+};

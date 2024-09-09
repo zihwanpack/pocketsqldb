@@ -8,21 +8,26 @@ import {
   updatePokemonQuery,
 } from './pokemon-sql';
 import { CustomError } from '../../config/customError';
-import { IOnePokemonProps, TPokemonData } from '../../types';
+import { IOnePokemonProps, TDBItem, TPokemonData } from '../../types';
 
-const getPokemon = async (number?: IOnePokemonProps) => {
+const getPokemon = async (number: number, limit: number): Promise<TDBItem[]> => {
   try {
     const connection = await pool.getConnection();
-
-    let row;
-    if (number === undefined || number === null) {
-      [row] = await pool.query(getPokemonQuery);
-    } else {
-      [row] = await pool.query(getPokemonQueryByNumber, [typeof number === 'string' ? parseInt(number) : number]);
-    }
-
+    const [rows] = await pool.query(getPokemonQuery, [number, limit]);
     connection.release();
-    return row;
+    return rows as TDBItem[];
+  } catch (err) {
+    throw new CustomError(errStatus.PARAMETER_IS_WRONG);
+  }
+};
+
+const getOnePokemon = async (number: IOnePokemonProps) => {
+  try {
+    const connection = await pool.getConnection();
+    const [row] = await pool.query(getPokemonQueryByNumber, [typeof number === 'string' ? parseInt(number) : number]);
+    connection.release();
+    const result = row[0];
+    return result;
   } catch (err) {
     throw new CustomError(errStatus.PARAMETER_IS_WRONG);
   }
@@ -39,7 +44,8 @@ const deletePokemon = async (number: IOnePokemonProps) => {
       throw new CustomError(errStatus.PARAMETER_IS_WRONG);
     }
     connection.release();
-    return row;
+    const result = row[0];
+    return result;
   } catch (err) {
     throw new CustomError(errStatus.PARAMETER_IS_WRONG);
   }
@@ -50,8 +56,8 @@ const postPokemon = async (poketData: TPokemonData) => {
     const connection = await pool.getConnection();
     const [row] = await connection.query(createPokemonQuery, [poketData.name, poketData.types, poketData.image]);
     connection.release();
-    console.log(row);
-    return row;
+    const result = row[0];
+    return result;
   } catch (err) {
     throw new CustomError(errStatus.PARAMETER_IS_WRONG);
   }
@@ -67,10 +73,11 @@ const updatePokemon = async (number: IOnePokemonProps, poketData: TPokemonData) 
       number,
     ]);
     connection.release();
-    return row;
+    const result = row[0];
+    return result;
   } catch (err) {
     throw new CustomError(errStatus.PARAMETER_IS_WRONG);
   }
 };
 
-export { getPokemon, deletePokemon, postPokemon, updatePokemon };
+export { getPokemon, getOnePokemon, deletePokemon, postPokemon, updatePokemon };

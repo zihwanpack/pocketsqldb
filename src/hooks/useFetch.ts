@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FetchResult } from '../types';
 
-const useFetch = <T>(url: string): FetchResult<T> => {
+const useFetch = <T>(url: string, number: number, limit: number): FetchResult<T> => {
   const [data, setData] = useState<T | null>(null);
   const [isPending, setPending] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
@@ -11,7 +11,7 @@ const useFetch = <T>(url: string): FetchResult<T> => {
     const fetchData = async () => {
       setPending(true);
       try {
-        const res = await fetch(url, {
+        const res = await fetch(`${url}/?cursor=${number}&limit=${limit}`, {
           method: 'GET',
           signal: abortController.signal,
         });
@@ -20,7 +20,6 @@ const useFetch = <T>(url: string): FetchResult<T> => {
         setData(result);
         setPending(false);
       } catch (err) {
-        console.log(err);
         setError(err as Error);
       } finally {
         setPending(false);
@@ -28,7 +27,7 @@ const useFetch = <T>(url: string): FetchResult<T> => {
     };
     fetchData();
     return () => abortController.abort();
-  }, [url]);
+  }, [url, limit, number]);
   return { data, isPending, error };
 };
 

@@ -1,4 +1,8 @@
-const getPokemonQuery = `SELECT * FROM pokemon;`;
+const getPokemonQuery = `SELECT * 
+                        FROM pokemon
+                        WHERE number < ?
+                        ORDER BY number DESC
+                        LIMIT ?`;
 
 const getPokemonQueryByNumber = `SELECT * FROM pokemon WHERE number = ?;`;
 
