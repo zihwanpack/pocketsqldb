@@ -1,32 +1,27 @@
-import { useState, useEffect } from 'react';
-import axios, { AxiosError } from 'axios';
+import { useState } from 'react';
+import { AxiosError } from 'axios';
+import { axiosInstance } from '../api/axios';
 
-function useDelete<T>(url: string, id: number) {
-  const [data, setData] = useState<T | null>(null);
-  const [isPending, setPending] = useState<boolean>(true);
+interface DeleteResponse {
+  success: boolean;
+  message: string;
+}
+
+function useDelete(id: number) {
+  const [data, setData] = useState<DeleteResponse | null>(null);
+  const [isPending, setPending] = useState<boolean | null>(null);
   const [error, setError] = useState<AxiosError | null>(null);
-
-  useEffect(() => {
-    const deleteData = async () => {
-      try {
-        setPending(true);
-        const res = await axios.delete(`${url}/${id}`);
-        setData(res.data);
-      } catch (err) {
-        setError(err as AxiosError);
-      } finally {
-        setPending(false);
-      }
-    };
-
-    deleteData();
-    return () => {
-      setData(null);
-      setError(null);
-    };
-  }, [url, id]);
-
-  return { data, isPending, error };
+  const deleteData = async () => {
+    setPending(true);
+    try {
+      const res = await axiosInstance.delete(`/${id}`);
+      setData(res.data);
+      setPending(false);
+    } catch (err) {
+      setError(err as AxiosError);
+    }
+  };
+  return { data, isPending, error, deleteData };
 }
 
 export default useDelete;

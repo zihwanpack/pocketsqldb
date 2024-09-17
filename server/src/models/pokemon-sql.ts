@@ -1,7 +1,7 @@
 const getPokemonQuery = `SELECT * 
                         FROM pokemon
-                        WHERE number < ?
-                        ORDER BY number DESC
+                        WHERE number > ?
+                        ORDER BY number ASC
                         LIMIT ?`;
 
 const getPokemonQueryByNumber = `SELECT * FROM pokemon WHERE number = ?;`;

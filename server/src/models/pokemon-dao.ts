@@ -36,7 +36,6 @@ const getOnePokemon = async (number: IOnePokemonProps) => {
 const deletePokemon = async (number: IOnePokemonProps) => {
   try {
     const connection = await pool.getConnection();
-
     let row;
     if (number !== undefined && !isNaN(Number(number))) {
       [row] = await pool.query(deletePokemonQueryByNumber, [typeof number === 'string' ? parseInt(number) : number]);
@@ -44,7 +43,7 @@ const deletePokemon = async (number: IOnePokemonProps) => {
       throw new CustomError(errStatus.PARAMETER_IS_WRONG);
     }
     connection.release();
-    const result = row[0];
+    const result = row;
     return result;
   } catch (err) {
     throw new CustomError(errStatus.PARAMETER_IS_WRONG);

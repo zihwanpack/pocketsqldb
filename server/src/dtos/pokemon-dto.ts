@@ -11,11 +11,14 @@ const getOnePokemonResponseDTO = (data): TPokemonData => {
 };
 
 const getPokemonResponseDTO = (data: TDBItem[]): TPokemonData[] => {
-  const pokemonData: TPokemonData[] = data.map(item => ({
-    name: item.name,
-    image: item.imageUrl,
-    types: item.types,
-  }));
+  const pokemonData: TPokemonData[] = data.map(item => {
+    return {
+      number: item.number,
+      name: item.name,
+      image: item.imageUrl,
+      types: item.types,
+    };
+  });
   return pokemonData;
 };
 

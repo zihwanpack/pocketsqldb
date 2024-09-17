@@ -28,7 +28,7 @@ type TDBItem = TPokemonData & {
 };
 
 interface IOnePokemonProps {
-  number?: string | number | null;
+  number: string | number | null;
 }
 
 export type { IDatabaseConfig, IOnePokemonProps, TDBItem, TPokemonData, IStatusType };

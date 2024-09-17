@@ -5,9 +5,8 @@ import { getAllPokemonProvider, getOnePokemonProvider } from '../providers/pokem
 import { deleteOnePokemon, postOnePokemon, updateOnePokemon } from '../services/pokemon-service';
 
 const getAllPokemonController = async (req, res) => {
-  let { limit } = req.query;
-  const { cursor } = req.query;
-  limit = parseInt(limit);
+  const { limit: strLimit, cursor } = req.query;
+  const limit = parseInt(strLimit);
   try {
     return res.send(response(successStatus.GET_ALL_POSTS_SUCCESS, await getAllPokemonProvider(cursor, limit)));
   } catch (err) {
@@ -27,6 +26,7 @@ const getOnePokemonController = async (req, res) => {
 const deleteOnePokemonController = async (req, res) => {
   try {
     const { number } = req.params;
+
     return res.send(response(successStatus.DELETE_POST_SUCCESS, await deleteOnePokemon(number)));
   } catch (err) {
     res.send(errResponse(errStatus.BAD_REQUEST));
